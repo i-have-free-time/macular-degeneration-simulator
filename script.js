@@ -17,6 +17,14 @@ async function startCamera(facingMode) {
 
     currentStream = stream;
     video.srcObject = stream;
+
+    // FIX MIRRORING
+    if (facingMode === "user") {
+      video.classList.add("unmirrored");
+    } else {
+      video.classList.remove("unmirrored");
+    }
+
   } catch (error) {
     alert("Camera access failed. Please allow permissions.");
   }
