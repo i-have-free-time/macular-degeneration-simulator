@@ -23,7 +23,7 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 60vmin;     /* Smaller because PNG is visually larger */
+  width: 40vmin;     /* Smaller because PNG is visually larger */
   height: auto;
 
   opacity: 0.95;     /* Preserve layered softness */
