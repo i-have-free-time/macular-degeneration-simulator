@@ -1,4 +1,4 @@
-/* ===== Page base ===== */
+/* ===== Base page ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ html, body {
   overflow: hidden;
 }
 
-/* ===== Live camera feed ===== */
+/* ===== Camera feed ===== */
 #camera {
   position: fixed;
   inset: 0;
@@ -17,21 +17,26 @@ html, body {
   object-fit: cover;
   z-index: 1;
 
-  /* Reduced visual acuity simulation */
-  filter: blur(2px) contrast(0.9);
+  /* Mild reduced visual acuity */
+  filter: blur(3px) contrast(0.95);
 }
 
-/* ===== Central blind spot (PNG overlay) ===== */
+/* ===== Front camera un-mirroring ===== */
+.unmirrored {
+  transform: scaleX(-1);
+}
+
+/* ===== Central blind spot ===== */
 #blindspot {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 50vmin;      /* adjust this number to change size */
+  width: 67vmin;     /* change this to resize */
   height: auto;
 
-  opacity: 0.95;      /* keeps layered softness */
+  opacity: 0.95;
   pointer-events: none;
   z-index: 2;
 }
