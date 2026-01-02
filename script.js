@@ -1,10 +1,11 @@
 const video = document.getElementById("camera");
 const toggleButton = document.getElementById("toggleCamera");
 
-let currentFacingMode = "environment";
+let currentFacingMode = "environment"; // start with back camera
 let currentStream = null;
 
 async function startCamera(facingMode) {
+  // Stop previous stream
   if (currentStream) {
     currentStream.getTracks().forEach(track => track.stop());
   }
@@ -18,7 +19,7 @@ async function startCamera(facingMode) {
     currentStream = stream;
     video.srcObject = stream;
 
-    // FIX MIRRORING
+    // Fix mirroring for front camera
     if (facingMode === "user") {
       video.classList.add("unmirrored");
     } else {
@@ -30,10 +31,12 @@ async function startCamera(facingMode) {
   }
 }
 
+// Switch cameras
 toggleButton.addEventListener("click", () => {
   currentFacingMode =
     currentFacingMode === "environment" ? "user" : "environment";
   startCamera(currentFacingMode);
 });
 
+// Start camera on load
 startCamera(currentFacingMode);
