@@ -1,3 +1,4 @@
+/* ===== Page base ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -7,6 +8,7 @@ html, body {
   overflow: hidden;
 }
 
+/* ===== Live camera feed ===== */
 #camera {
   position: fixed;
   inset: 0;
@@ -14,33 +16,40 @@ html, body {
   height: 100vh;
   object-fit: cover;
   z-index: 1;
+
+  /* Reduced visual acuity simulation */
+  filter: blur(6px) contrast(0.9);
 }
 
-/* UPDATED FOR NEW PNG */
+/* ===== Central blind spot (PNG overlay) ===== */
 #blindspot {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 67vmin;     /* Smaller because PNG is visually larger */
+  width: 50vmin;      /* adjust this number to change size */
   height: auto;
 
-  opacity: 0.95;     /* Preserve layered softness */
+  opacity: 0.95;      /* keeps layered softness */
   pointer-events: none;
   z-index: 2;
 }
 
+/* ===== Camera switch button ===== */
 #toggleCamera {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+
   padding: 12px 18px;
   font-size: 16px;
   border-radius: 8px;
   border: none;
-  background: rgba(0,0,0,0.7);
+
+  background: rgba(0, 0, 0, 0.7);
   color: white;
+
   z-index: 3;
 }
